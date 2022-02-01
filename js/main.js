@@ -217,9 +217,7 @@ function removeDuplicates(arr){
     let arr2 = []
     for (let i = 0; i < arr.length; i++)
     {
-        console.log(arr[i])
         if (!(arr2.includes(arr[i]))){
-            console.log("!")
             arr2.push(arr[i])
         }
     }

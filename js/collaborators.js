@@ -11,7 +11,7 @@ const collaborators = [
         name:"Alberto Marina Moreno",
         country:"Spain",
         aff:"Instituto de Biomedicina de Valencia (CSIC). Dpto. Gen&oacute;mica y Prote&oacute;mica. Unidad de cristalograf&iacute;a de macromol&eacute;culas.",
-        url:""
+        url:"https://www.csic.es/es/investigaci%C3%B3n/investigadoresalberto-marina-moreno"
     },
     {
         title:"Prof.",
