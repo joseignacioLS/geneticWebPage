@@ -226,11 +226,22 @@ function removeDuplicates(arr){
     return arr2
 }
 
-function people(filter="All"){
+function people(filter="All", force=false){
     nav.innerHTML = "";
     main.innerHTML = "";
     appendNav();
     appendFooter()
+    let data = window.location.href.split("#")
+    if (force)
+    {
+        window.location.href = window.location.href.split("#")[0] + `#${filter}`
+    }
+    else if (data.length == 2)
+    {
+        filter = data[1]
+    }
+    filter = filter.replace("%20", " ")
+
 
     main.innerHTML += `<h1 class="section--title">${filter}</h1>`
 
@@ -246,10 +257,10 @@ function people(filter="All"){
 
     //aqui genero la segunda barra de navegación
     nav_2.innerHTML += `
-    <span class='nav--link' onclick='people("All")'>All</span>`
+    <span class='nav--link' onclick='people("All", true)'>All</span>`
     for (let i = 0; i < categories.length; i++){
         nav_2.innerHTML += `
-        <span class='nav--link' onclick='people("${categories[i]}")'>${categories[i]}</span>`
+        <span class='nav--link' onclick='people("${categories[i]}", true)'>${categories[i]}</span>`
     }
 
 
