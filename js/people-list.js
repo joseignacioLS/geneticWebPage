@@ -76,14 +76,14 @@ const people_list = [
         ],
         pic:"./imagenes/people/foto-nadie.jpg"
     },
-    {
-        key:"Technicians",
-        title:"Technician",
-        name:"Trinidad Mata",
-        tlf:"+34 965 90 93 48",
-        mail:"trinidad.mata@ua.es",
-        desc:[
-        ],
-        pic:"./imagenes/people/foto-nadie.jpg"
-    }
+    // {
+    //     key:"Technicians",
+    //     title:"Technician",
+    //     name:"Trinidad Mata",
+    //     tlf:"+34 965 90 93 48",
+    //     mail:"trinidad.mata@ua.es",
+    //     desc:[
+    //     ],
+    //     pic:"./imagenes/people/foto-nadie.jpg"
+    // }
 ]

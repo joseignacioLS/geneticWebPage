@@ -272,7 +272,7 @@ function people(filter="All", force=false){
         //foto
         let im = document.createElement("img");
         im.className="img--all"
-        im.src = "./imagenes/people/grupo.jpg"
+        im.src = "./imagenes/people/grupo.jpg?ver=1"
         main.appendChild(im);
 
         //lista de gente

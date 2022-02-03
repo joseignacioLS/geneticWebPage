@@ -1,3 +1,7 @@
+
+html {
+  overflow-y: scroll;
+}
 *{
     margin:0;
     padding:0;
@@ -28,8 +32,7 @@ nav{
     display:flex;
     justify-content: center;
     align-items: center;
-    gap:394px;
-    /* background-color:black; */
+    gap:650px;
 }
 .nav--otherlogos{
     display: flex;
@@ -46,6 +49,7 @@ nav{
 }
 
 .nav--bar{
+    margin-top:10px;
     height:26px;
     width:100%;
     display:flex;
