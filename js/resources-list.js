@@ -1,4 +1,4 @@
-const res_list = [
+const resourceList = [
     {
         name:"default Cyanobacterial Linked Genome",
         descr:"An interactive platform based on cyanobacterial linkage networks to assist functional genomics: the default Cyanobacterial Linked Genome (dclg)",

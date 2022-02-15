@@ -10,265 +10,457 @@ const pages = {
     "Resources":"./resources.htm",
 }
 
+
 const nav = document.getElementsByTagName("nav")[0]
 const main = document.getElementsByTagName("main")[0]
 const footer = document.getElementsByTagName("footer")[0]
 
 
-
-
-
 function appendNav(){
 
-    let navLogos = document.createElement("section")
-    navLogos.innerHTML = `<section class="nav--logos">
-    <img src="./imagenes/basicos/logo-cg.png">
-    <section class="nav--otherlogos">
-        <img src="./imagenes/basicos/logo-minic.jpg">
-        <img src="./imagenes/basicos/logo-generalitat.png">
-        <img src="./imagenes/basicos/logo-ua.jpg">
-    </section>
-    </section>`
-    let navBar = document.createElement("section")
-    navBar.className = "nav--bar";
+    let sectionContainer1 = createElement(
+        "section",
+        ["nav--logos"],
+        [
+            `<img src="./imagenes/basicos/logo-cg.png">`,
+            createElement(
+                "section",
+                ["nav--otherlogos"],
+                [
+                    `<img src="./imagenes/basicos/logo-minic.jpg">`,
+                    `<img src="./imagenes/basicos/logo-generalitat.png">`,
+                    `<img src="./imagenes/basicos/logo-ua.jpg">`
+                ]
+            )
+        ]
+    )
 
+    let sectionContainer2 = createElement(
+        "section",
+        ["nav--bar"],
+        []
+    )
     for (let page in pages)
     {
-        navBar.innerHTML += `<a class="nav--link" href="${pages[page]}">${page}</a>`
+        sectionContainer2.innerHTML += `<a class="nav--link" href="${pages[page]}">${page}</a>`
     }
 
-    navBar.innerHTML += `</section>`
 
-    nav.appendChild(navLogos)
-    nav.appendChild(navBar)
+    nav.appendChild(sectionContainer1)
+    nav.appendChild(sectionContainer2)
 }
 
 
 function appendFooter(){
-    footer.innerHTML = `
-    <p class="footer--text">Cyanobacterial Genetics Alicante - Universidad de Alicante</p>`
+    footer.appendChild(
+        createElement(
+            "p",
+            ["footer--text"],
+            ["Cyanobacterial Genetics Alicante - Universidad de Alicante"]
+        )
+    )
 }
 
 
 function index(){
-    appendNav();
+    appendNav()
     appendFooter()
 
-    let section = document.createElement("section")
-    section.className = "anuncio--SI"
-
-    section.innerHTML += `
-    <h1>The <em>Molecular Genetics of Cyanobacteria</em> Life Special Issue is open to submissions!</h1>
-    <p>More information at Life's webpage <br><a href="https://www.mdpi.com/journal/life/special_issues/genetics_cyanobacteria" target="_blank"><img src="./imagenes/otros/life-logo.webp"</a></p>`
-
+    //ANUNCIO
+    let ad = createElement(
+        "section", 
+        ["anuncio--SI"], 
+        [
+            createElement(
+                "h1", 
+                [], 
+                ["The <em>Molecular Genetics of Cyanobacteria</em> Life Special Issue is open to submissions!"]
+            ),
+            createElement(
+                "p",
+                [],
+                [`More information at Life's webpage <br><a href="https://www.mdpi.com/journal/life/special_issues/genetics_cyanobacteria" target="_blank"><img src="./imagenes/otros/life-logo.webp"</a>`]
+            )
+        ]
+    )
     
-    main.appendChild(section)
+    //PRESENTACION
+    let sectionContainer1 = createElement(
+        "section",
+        ["index--welcome"],
+        [
+            "<br>",
+            createElement(
+                "p",
+                [],
+                ["Our research focus on the molecular mechanisms that allow bacteria to sense and adapt to environmental changes. We are particularly interested in regulatory interaction networks."]
+            ),
+            "<br>",
+            createElement(
+                "p",
+                [],
+                ["Most of our work is carried out with a model system, the fresh water cyanobacterium <i>Synechococcus elongatus PCC 7942</i>"]
+            ),
+        ]
+    )
 
-    main.innerHTML += `<section class='index--welcome'><h1 class='section--title'>Welcome to our website</h1>
-    <br>
-    <p>Our research focus on the molecular mechanisms that allow bacteria to sense and adapt to environmental changes. We are particularly interested in regulatory interaction networks.</p><br>
-
-    <p>Most of our work is carried out with a model system, the fresh water cyanobacterium <i>Synechococcus elongatus PCC 7942</i></p>
-    </section>
-    <section class='index--images'>
-    <img src='./imagenes/basicos/foto-home01.jpg'>
-    <img src='./imagenes/basicos/foto-home02.jpg'>
-    </section>`
-
+    let sectionContainer2 = createElement(
+        "section",
+        ["index--images"],
+        [
+            "<img src='./imagenes/basicos/foto-home01.jpg'>",
+            "<img src='./imagenes/basicos/foto-home02.jpg'>"
+        ]
+    )    
+    
+    main.appendChild(ad)
+    main.appendChild(
+        createElement(
+            "h1",
+            ["section--title"],
+            ["Welcome to our website"]
+        )
+    )
+    main.appendChild(sectionContainer1)
+    main.appendChild(sectionContainer2)
 }
+
 
 function research(){
-    appendNav();
+    appendNav()
     appendFooter()
-    main.innerHTML += `<section class='research--lines'>
-    <h1  class='section--title'>Interation networks and functional genomics in cyanobacteria</h1><br>
-    <p><strong>Cyanobacteria</strong> are the simplest organisms performing <strong>oxygenic photosynthesis</strong>. They must adapt their metabolic processes to important environmental challenges, like those imposed by the succession of days and nights. However, the regulatory mechanisms behind the versatility and environmental adaptations of cyanobacteria are largely unknown, despite their enormous <strong>ecological and biotechnological importance</strong>. Since cyanobacteria are the ancestors of plant chloroplasts, their study is also important to <strong>understand life on Earth</strong>. Some cyanobacterial proteins have close relatives in chloroplasts, and many others are found exclusively in the cyanobacterial phylum.</p><br>
-    <div class='research--img'>
-    <img src='./imagenes/basicos/research-02.png'>
-    <span class='caption'>Liquid culture of <i>S. elongatus</i>, showing a zoom-in picture of the cells (bright-field and confocal microscopy)</span>
-    </div>
-    <p>We are interested in understanding <strong>processes and regulatory mechanisms</strong> that allow cyanobacteria to inhabit most illuminated ecosystems and play essential roles in the carbon and nitrogen cycles. To this goal we are concentrating efforts in the characterization of the complex signaling network involving the unique protein <strong>PipX</strong> (for PII-interacting protein X), which was identified as a component of the <strong>nitrogen regulation network</strong> in <i>Synechococcus elongatus PCC7942</i>. We are using this cyanobacterium, amenable to genetic disection, to connect the wealth of genomic information to the particular features of cyanobacterial cells, for which we have recently developed a <a href="https://dfgm.ua.es/es/cyanobacterial-genetics/dclg/index.htm">Cyanobacterial Linked Genome</a>, that uses as reference the gene set of S. elongatus.</p><br>
-    
-    <div class='research--img'>
-    <img src='./imagenes/basicos/research-03.png'>
-    <span class='caption'>Model for the transcriptional regulation of the PipX regulon. The proteins PipX, PII (signal transduction), NtcA (transcriptional factor), PipY (PLP binding protein) and at least another transcriptional factor (hypothetically PlmA) interact physically or modulate the formation of other complexes in response to different effectors.</span>
-    </div>
-    </section>`
-    
+
+    let sectionContainer = createElement(
+        "section",
+        ["research--lines"],
+        [
+            "<br>",
+            createElement(
+                "p",
+                [],
+                ["<strong>Cyanobacteria</strong> are the simplest organisms performing <strong>oxygenic photosynthesis</strong>. They must adapt their metabolic processes to important environmental challenges, like those imposed by the succession of days and nights. However, the regulatory mechanisms behind the versatility and environmental adaptations of cyanobacteria are largely unknown, despite their enormous <strong>ecological and biotechnological importance</strong>. Since cyanobacteria are the ancestors of plant chloroplasts, their study is also important to <strong>understand life on Earth</strong>. Some cyanobacterial proteins have close relatives in chloroplasts, and many others are found exclusively in the cyanobacterial phylum."]
+            ),
+            "<br>",
+            createElement(
+                "div",
+                ["research--img"],
+                [
+                    "<img src='./imagenes/basicos/research-02.png'>",
+                    createElement(
+                        "span",
+                        ["caption"],
+                        ["Liquid culture of <i>S. elongatus</i>, showing a zoom-in picture of the cells (bright-field and confocal microscopy)"]
+                    )
+                ]
+            ),
+            createElement(
+                "p",
+                [],
+                ["We are interested in understanding <strong>processes and regulatory mechanisms</strong> that allow cyanobacteria to inhabit most illuminated ecosystems and play essential roles in the carbon and nitrogen cycles. To this goal we are concentrating efforts in the characterization of the complex signaling network involving the unique protein <strong>PipX</strong> (for PII-interacting protein X), which was identified as a component of the <strong>nitrogen regulation network</strong> in <i>Synechococcus elongatus PCC7942</i>. We are using this cyanobacterium, amenable to genetic disection, to connect the wealth of genomic information to the particular features of cyanobacterial cells, for which we have recently developed a <a href='https://dfgm.ua.es/es/cyanobacterial-genetics/dclg/index.htm'>Cyanobacterial Linked Genome</a>, that uses as reference the gene set of <i>S. elongatus</i>."]
+            ),
+            "<br>",
+            createElement(
+                "div",
+                ["research--img"],
+                [
+                   "<img src='./imagenes/basicos/research-03.png'>",
+                   createElement(
+                       "span",
+                       ["caption"],
+                       ["Model for the transcriptional regulation of the PipX regulon. The proteins PipX, PII (signal transduction), NtcA (transcriptional factor), PipY (PLP binding protein) and at least another transcriptional factor (hypothetically PlmA) interact physically or modulate the formation of other complexes in response to different effectors."]
+                   ) 
+                ]
+            )
+        ]
+    )
+    main.appendChild(
+        createElement(
+            "h1",
+            ["section--title"],
+            ["Interation networks and functional genomics in cyanobacteria"]
+        ),)
+    main.appendChild(sectionContainer)    
 }
+
 
 function publications(){
-
-    appendNav();
+    appendNav()
     appendFooter()
-    let pubList = document.createElement("section");
-    pubList.className="pub--list";
 
-    pubList.innerHTML += "<h1 class='section--title'>Our Publications</h1>"
+    let sectionContainer = createElement(
+        "section",
+        ["pub--list"],
+        [
+            ...pubList.map(ele => {
+                return createElement(
+                    "article",
+                    ["publication"],
+                    [
+                        createElement(
+                            "section",
+                            ["pub--authors"],
+                            [`<img src='./imagenes/basicos/bullet-ver.jpg'><p>${ele.authors} (${ele.year})</p>`]
+                        ),
+                        createElement(
+                            "p",
+                            ["pub--title"],
+                            [`${decorateTitle(ele.title)}`]
+                        ),
+                        createElement(
+                            "p",
+                            ["pub--refe"],
+                            [ele.refe]
+                        ),
+                        `<a href='${ele.url}' target='_blank'><img src='./imagenes/basicos/bot-read-public.jpg'></a>`
+                    ]
+                )
+            })
+        ]
+    )
     
-    for (i = 0; i < pubs.length; i++)
-    {
-        let art = document.createElement("article");
-        art.className = "publication";
-        art.innerHTML += `
-        <section class='pub--authors'>
-            <img src='./imagenes/basicos/bullet-ver.jpg'><p>${pubs[i].authors} (${pubs[i].year})</p>
-        </section>
-        <p class='pub--title'>${pubs[i].title}</p>
-        <p class='pub--refe'>${pubs[i].refe}</p>
-        <a href='${pubs[i].url}' target='_blank'><img src='./imagenes/basicos/bot-read-public.jpg'></a>`;
-        pubList.appendChild(art)
-    }
+    
 
-    main.appendChild(pubList);
+    main.appendChild(
+        createElement(
+            "h1",
+            ["section--title"],
+            ["Our Publications"]
+        )
+    )
+    main.appendChild(sectionContainer);
 }
+
 
 function network(){
-    appendNav();
+    appendNav()
     appendFooter()
-    main.innerHTML += "<h1 class='section--title'>Our network</h1>"
 
-    let collList = document.createElement("section")
-    collList.className="col--list"
+    let sectionContainer = createElement(
+        "section",
+        ["col--list"],
+        [
+            ...collaborators.map(ele=>{        
+                return createElement(
+                    "article",
+                    ["collaborator"],
+                    [
+                        createElement(
+                            "p",
+                            ["coll--name"],
+                            [`${ele.title} ${ele.name}`]
+                        ),
+                        createElement(
+                            "p",
+                            ["coll--country"],
+                            [ele.country]
+                        ),
+                        createElement(
+                            "p",
+                            [],
+                            [ele.aff]
+                        ),
+                        `<a class='coll--link' href='${ele.url}' target='J_blank'><img src='./imagenes/basicos/bot-info.jpg'></a>`
+                    ]
+                )
+            })
+        ]
+    )
+        
 
-    for (let i = 0; i < collaborators.length; i++){
-        let art = document.createElement("article")
-        art.className="collaborator";
-        art.innerHTML += `
-        <p class='coll--name'>${collaborators[i].title} ${collaborators[i].name}</p>
-        <p class='coll--country'>${collaborators[i].country}</p>
-        <p>${collaborators[i].aff}</p>
-        <a class='coll--link' href='${collaborators[i].url}' target='J_blank'><img src='./imagenes/basicos/bot-info.jpg'></a>
-        `
-
-
-
-        collList.appendChild(art);
-
-
-    
-    }
-    main.append(collList);
+    main.appendChild(
+        createElement(
+            "h1",
+            ["section--title"],
+            ["Our Network"]
+        )
+    )
+    main.append(sectionContainer)
 }
+
 
 function workWithUs() {
-    appendNav();
+    appendNav()
     appendFooter()
-    main.innerHTML += `
-    <div class='work--section'>
-    <section>
-    <h1 class='section--title'>Do you want to work with us?</h1>
-    <p class='work--descr'>If you are interested in joining the group as Ph.D. student or Post-doc please send your C.V. and research interests to <b>contrera@ua.es</b></p>
-    </section>
-    <img src='./imagenes/basicos/workwithus.jfif'>
-    </div>`
+
+    let sectionContainer = createElement(
+        "div",
+        ["work--section"],
+        [
+            createElement(
+                "section",
+                [],
+                [
+                    createElement(
+                        "p",
+                        ["work--descr"],
+                        ["If you are interested in joining the group as Ph.D. student or Post-doc please send your C.V. and research interests to <b>contrera@ua.es</b>"]
+                    )
+                ]
+            ),
+            "<img src='./imagenes/basicos/workwithus.jfif'>"            
+        ]
+    )
+
+    main.appendChild(
+        
+        createElement(
+            "h1",
+            ["section--title"],
+            ["Do you want to work with us?"]
+        )
+    )
+    main.appendChild(sectionContainer)
 }
 
+
 function contact(){
-    appendNav();
+    appendNav()
     appendFooter()
-    main.innerHTML += "<h1 class='section--title'>Contact</h1>"
-    let container = document.createElement("div")
-    container.className="container--contact"
 
-    let s1 = document.createElement("section")
-    let s2 = document.createElement("section")
+    let sectionContainer = createElement(
+        "div",
+        ["container--contact"],
+        [
+            createElement(
+                "section",
+                [],
+                [
+                    createElement(
+                        "p",
+                        [],
+                        ["Dpto. Fisilogía, Genética y Microbiología."]
+                    ),
+                    createElement(
+                        "p",
+                        [],
+                        ["Pabellón 12"]
+                    ),
+                    createElement(
+                        "p",
+                        [],
+                        ["Universidad de Alicante"]
+                    ),
+                    "<a href='https://web.ua.es/en/universidad-alicante/get-to-know-the-campus.html' target='_blank'><img src='./imagenes/basicos/bot-campus.jpg'></a>",
+                    createElement(
+                        "p",
+                        ["caption"],
+                        [`Carretera de San Vicente del Raspeig s/n
+                        03690 San Vicente del Raspeig (Alicante)
+                        fax (+34) 965 909 569`]
+                    )
+                ]
+            ),
+            createElement(
+                "section",
+                [],
+                [`
+                <iframe src='https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3127.378242201547!2d-0.5132099!3d38.3865026!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd6236bbaba189a9%3A0x7da3bc67c687893f!2sEdificio+12+-+Pabellon+Universitario+12%2C+Universidad+de+Alicante%2C+03690+San+Vicente+del+Raspeig%2C+Alicante!5e0!3m2!1sen!2ses!4v1419242111570'></iframe>
+                `
 
-    s1.innerHTML = `
-    <p>Dpto. Fisilog&iacute;a, Gen&eacute;tica y Microbiolog&iacute;a.</p>
-    <p>Pabell&oacute;n 12</p>
-    <p>Universidad de Alicante</p>
-    <a href='https://web.ua.es/en/universidad-alicante/get-to-know-the-campus.html' target='_blank'><img src='./imagenes/basicos/bot-campus.jpg'></a>
-    <p class='caption'>Carretera de San Vicente del Raspeig s/n
-    03690 San Vicente del Raspeig (Alicante)
-    fax (+34) 965 909 569</p>`
+                ]
+            )
+        ]
+    )
 
-    s2.innerHTML = `
-    <iframe src='https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3127.378242201547!2d-0.5132099!3d38.3865026!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd6236bbaba189a9%3A0x7da3bc67c687893f!2sEdificio+12+-+Pabellon+Universitario+12%2C+Universidad+de+Alicante%2C+03690+San+Vicente+del+Raspeig%2C+Alicante!5e0!3m2!1sen!2ses!4v1419242111570'></iframe>
-    `
-
-    container.appendChild(s1)
-    container.appendChild(s2)
-    main.appendChild(container)
+    main.appendChild(
+        createElement(
+            "h1",
+            ["section--title"],
+            ["Contact"]
+        )
+    )
+    main.appendChild(sectionContainer)
 }
 
 
 function resources(){
-    appendNav();
+    appendNav()
     appendFooter()
-    main.innerHTML += "<h1 class='section--title'>Resources</h1>"
-    let container = document.createElement("div")
-    container.className="container--resources"
-    for (let i = 0; i < res_list.length; i++){
-        let article = document.createElement("article")
-        
-        article.innerHTML = `
-        <a href='${res_list[i].url}'>${res_list[i].name}</a>
-        <p>${res_list[i].descr}</p>
-        <img src='${res_list[i].img}'>`
 
-        container.appendChild(article)
-    }
+    
+    let sectionContainer = createElement(
+            "div",
+            ["container--resources"],
+            [
+                ...resourceList.map(resource=>{
+                    return createElement(
+                        "article",
+                        [],
+                        [
+                            `<a href='${resource.url}'>${resource.name}</a>`,
+                            `<p>${resource.descr}</p>`,
+                            `<img src='${resource.img}'>`
+                        ]
+                    )
+                })
+            ]
+        )
+    
+    main.appendChild(
+        createElement(
+            "h1",
+            ["section--title"],
+            ["Resources"]
+        )
+    )
 
-    main.append(container)
+    main.appendChild(sectionContainer)
 }
+
 
 function removeDuplicates(arr){
     let arr2 = []
-    for (let i = 0; i < arr.length; i++)
-    {
-        if (!(arr2.includes(arr[i]))){
-            arr2.push(arr[i])
-        }
-    }
+    arr.map(ele =>{
+        if (arr2.includes(ele)) return
+        arr2.push(ele)
+    })
     return arr2
 }
 
+
 function people(filter="All", force=false){
-    nav.innerHTML = "";
-    main.innerHTML = "";
-    appendNav();
+    nav.innerHTML = ""
+    main.innerHTML = ""
+    appendNav()
     appendFooter()
+
     let data = window.location.href.split("#")
     if (force)
     {
         window.location.href = window.location.href.split("#")[0] + `#${filter}`
     }
-    else if (data.length == 2)
+    else if (data.length === 2)
     {
         filter = data[1]
     }
     filter = filter.replace("%20", " ")
 
 
-    main.innerHTML += `<h1 class="section--title">${filter}</h1>`
+    let categories = ["All",...removeDuplicates(peopleList.map(ele => ele.key))]
 
     //second Nav
-    let nav_2 = document.createElement("section")
-    nav_2.classList.add("nav--bar")
-    nav_2.classList.add("second--navBar")
-    nav.appendChild(nav_2)
-
-
-        
-    let categories = removeDuplicates(people_list.map(ele => ele.key))
-
-    //aqui genero la segunda barra de navegación
-    nav_2.innerHTML += `
-    <span class='nav--link' onclick='people("All", true)'>All</span>`
-    for (let i = 0; i < categories.length; i++){
-        nav_2.innerHTML += `
-        <span class='nav--link' onclick='people("${categories[i]}", true)'>${categories[i]}</span>`
-    }
+    nav.appendChild(
+        createElement(
+            "section",
+            ["nav--bar","second--navBar"],
+            [
+                ...categories.map(cat => `<span class='nav--link' onclick='people("${cat}", true)'>${cat}</span>`
+                )
+            ]
+        )
+    )           
 
 
     //esta es la seccion de esta pagina
-    let people_section = document.createElement("section")
-    people_section.className="people--section"
-
+    let sectionContainer = createElement(
+        "section",
+        ["people--section"],
+        []
+    )
+    
 
     //si no hay filtro aplicado enseño la foto del grupo y una lista de gente por categorias
-    if (filter == "All") {
+    if (filter === "All") {
         //foto
         let im = document.createElement("img");
         im.className="img--all"
@@ -276,78 +468,83 @@ function people(filter="All", force=false){
         main.appendChild(im);
 
         //lista de gente
-        let sec = document.createElement("section")
-        sec.className="group--description"
+        main.append(
+            createElement(
+                "section",
+                ["group--description"],
+                [
+                    ...categories.map(cat=>{
+                        if (cat === "All") return
 
-
-        for (let i = 0; i < categories.length; i++)
-        {
-            let sec2 = document.createElement("section")
-            sec2.className="group--list"
-            let tit = document.createElement("h2")
-            tit.innerHTML = categories[i]
-            sec2.appendChild(tit)
-
-            for (let j = 0; j < people_list.length; j++){
-
-                if (people_list[j].key == categories[i]){
-
-                    sec2.innerHTML += `<p>${people_list[j].name}</p>`
-                }
-            }
-
-
-
-            sec.append(sec2)
-        }
-
-        main.append(sec)
-        
-
-
-
+                        return createElement(
+                            "section",
+                            ["group--list"],
+                            [
+                                createElement(
+                                    "h2",
+                                    [],
+                                    [cat]
+                                ),
+                                ...peopleList.map(person=>{
+                                    if (person.key === cat) return `<p>${person.name}</p>`
+                                })
+                            ]
+                        )
+                    })
+                ]
+            )
+        )        
     }
     else
     {
-        for (let i = 0; i < people_list.length; i++){
-            if (people_list[i].key == filter){
-                let article = document.createElement("article")
-                let s1 = document.createElement("section")
-                let s2 = document.createElement("section")
-                s1.className = "people--card--img"
-                s2.className = "people--card--info"
-                article.className="people--card"
-                s1.innerHTML += `<img src="${people_list[i].pic}">`
-                s2.innerHTML += `
-                    <p class="people--card--name">${people_list[i].name}</p>
-                    <p class="people--card--title">${people_list[i].title}</p>
-                    <p class="people--card--tlf">Telephone: ${people_list[i].tlf}</p>
-                    <p class="people--card--mail">Email: ${people_list[i].mail}</p>
-                `
-                if (filter == "Group Leader"){
-    
-                    for (let j = 0; j < people_list[i].desc.length; j++){
-                        s2.innerHTML += `<li>${people_list[i].desc[j]}</li>`
-                    }
-                    
-                    
-                }
-                else{
-                    s2.innerHTML += 
-                    `
-                    </section>
-                    `
-    
-                }
-                article.appendChild(s1)
-                article.appendChild(s2)
-                people_section.appendChild(article)
-            }
-        }
+        peopleList.filter(ele => ele.key === filter).map(ele=>{
+            sectionContainer.appendChild(
+                createElement(
+                    "article",
+                    ["people--card"],
+                    [
+                        createElement(
+                            "section",
+                            ["people--card--img"],
+                            [
+                                `<img src="${ele.pic}">`
+                            ]
+                        ),
+                        createElement(
+                            "section",
+                            ["people--card--info"],
+                            [
+                                `<p class="people--card--name">${ele.name}</p>`,
+                                `<p class="people--card--title">${ele.title}</p>`,
+                                `<p class="people--card--tlf">Telephone: ${ele.tlf}</p>`,
+                                `<p class="people--card--mail">Email: ${ele.mail}</p>`,
+                                ...ele.desc.map(merito => `<li>${merito}</li>`
+                                ) 
+                            ]
+                        )
+                    ]
+                )
+            )
+        })
     }
-    
 
-    main.append(people_section)
     
+    main.appendChild(
+        createElement(
+        "h1",
+        ["section--title"],
+        [filter !== "All"? filter : ""]
+    ))
+    main.append(sectionContainer)
+}
 
+
+function createElement(type, classNames, content){
+    let ele = document.createElement(type)
+    classNames.map(c => ele.classList.add(c))
+    content.map(c=>{
+        if (typeof(c) === "string") ele.innerHTML += c
+        if (typeof(c) === "object") ele.appendChild(c)
+    })
+    return ele
 }

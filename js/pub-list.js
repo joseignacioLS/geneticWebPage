@@ -1,59 +1,24 @@
 
-function DecorateTitle(title){
-	new_title = "";
-	splitted_title = title.split(" ");
+function decorateTitle(title){
 	cursives = ["S. elongatus", "Synechococcus elongatus", "Escherichia coli", "Synechococcus", "pipX", "nblA"];
-	jump = false;
-	for (j = 0; j < splitted_title.length; j++)
-	{
-		if (jump){
-			jump = false;
-		}
-		else{
-			try
-			{				
-				pair = splitted_title[j] + " " + splitted_title[j + 1]
-				if (cursives.includes(pair))
-				{	
-					new_title += "<i>"+pair+"</i> ";
-					jump = true;
-				}
-				else{
-					if (cursives.includes(splitted_title[j]))
-					{	
-						new_title += "<i>"+splitted_title[j]+"</i> ";
-					}
-					else{
-						new_title += splitted_title[j]+" ";
-					}
-				}
-			}
-			catch(err)
-			{
-				if (cursives.includes(splitted_title[j]))
-				{	
-					new_title += "<i>"+splitted_title[j]+"</i> ";
-				}
-				else{
-					new_title += splitted_title[j]+" ";
-				}				
-			}
-		}
-	}
-	return new_title;
+	cursives.map(cur => {
+		let rg = new RegExp("("+cur+")")
+		title = title.replace(rg, "\<i\>$1\<\/i\>")
+	})
+	return title;
 }
 
-const pubs = [
+const pubList = [
     {"title":"Regulatory Connections Between the Cyanobacterial Factor PipX and the Ribosome Assembly GTPase EngA", "authors":"Carmen Jerez, Paloma Salinas, Antonio Llop, Raquel Cantos, Javier Espinosa, Jose I Labella & Asuncion Contreras", "year":"2021", "refe":"Front. Microbiol., 09 December 2021 doi: 10.3389/fmicb.2021.781760", "url":"https://www.frontiersin.org/articles/10.3389/fmicb.2021.781760/full"},
     {"title":"Functional and structural characterization of PII-like protein CutA does not support involvement in heavy metal tolerance and hints at a small-molecule carrying/signaling role", "authors":"Khaleb A Selim, Lorena Tremino, Claro Marco-Marin, Vikram Alva, Javier Espinosa, Asuncion Contreras, Marcus D Hartmann, Karl Forchhammer & Vicente Rubio", "year":"2021", "refe":"FEBS J. 2021 Feb;288(4):1142-1162. doi: 10.1111/febs.15464. Epub 2020 Jul 22.", "url":"https://febs.onlinelibrary.wiley.com/doi/10.1111/febs.15464"},
-    {"title":"Distinctive Features of PipX, a Unique Signaling Protein of Cyanobacteria", "authors":"Jose I. Labella, Raquel Cantos, Paloma Salinas, Javier Espinosa & Asunci&oacute;n Contreras", "year":"2020", "refe":"Life (Basel). 2020;10(6):E79. Published 2020 May 28. doi:10.3390/life10060079", "url":"https://www.mdpi.com/2075-1729/10/6/79"},
-    {"title":"The default cyanobacterial linked genome: an interactive platform based on cyanobacterial linkage networks to assist functional genomics", "authors":"Jose I. Labella, Antonio Llop and Asunci&oacute;n Contreras", "year":"2020", "refe":"FEBS Lett. 2020 Mar 31. doi: 10.1002/1873-3468.13775", "url":"https://febs.onlinelibrary.wiley.com/doi/abs/10.1002/1873-3468.13775"},
-    {"title":"The PII-NAGK-PipX-NtcA Regulatory Axis of Cyanobacteria: A Tale of Changing Partners, Allosteric Effectors and Non-covalent Interactions", "authors":"Alicia Forcada-Nadal, Jos&eacute; Luis Llacer, Asunci&oacute;n Contreras, Clara Marco-Mar&iacute;n and Vicente Rubio ", "year":"2018", "refe":"Front. Mol. Biosci., 13 November 2018; doi: 10.3389/fmolb.2018.00091", "url":"https://www.frontiersin.org/articles/10.3389/fmolb.2018.00091/full"},
-    {"title":"The nitrogen regulator PipX acts in cis to prevent operon polarity", "authors":"Raquel Cantos, Jose Ignacio Labella, Javier Espinosa and Asunci&oacute;n Contreras ", "year":"2018", "refe":"Environ Microbiol Rep. 2018 Aug 20; doi: 10.1111/1758-2229.12688.", "url":"https://onlinelibrary.wiley.com/doi/full/10.1111/1758-2229.12688"},
-    {"title":"Energy drives the dynamic localization of cyanobacterial nitrogen regulators during diurnal cycles", "authors":"Javier Espinosa, Jose I Labella, Raquel Cantos and Asunci&oacute;n Contreras ", "year":"2018", "refe":"Environmental Microbiology 2018 Mar;20(3):1240-1252; doi: 10.1111/1462-2920.14071.", "url":"http://onlinelibrary.wiley.com/doi/10.1111/1462-2920.14071/full"},
-    {"title":"Studies on cyanobacterial protein PipY shed light on structure, potential functions and vitamin B6-dependent epilepsy", "authors":"Lorena Tremi&ntilde;o, Alicia Forcada-Nadal, Asunci&oacute;n Contreras and Vicente Rubio ", "year":"2017", "refe":"FEBS Letters 2017 Oct; doi: 10.1002/1873-3468.12841", "url":"http://onlinelibrary.wiley.com/doi/10.1002/1873-3468.12841/abstract;jsessionid=62631F9B65F6D65DC1BECC587D359EFC.f04t02"},
-    {"title":"PipY, a member of the conserved COG0325 family of PLP-binding proteins, expands the cyanobacterial nitrogen regulatory network", "authors":"Jose I Labella, Raquel Cantos, Javier Espinosa, Alicia Forcada-Nadal, Vicente Rubio and Asunci&oacute;n Contreras ", "year":"2017", "refe":"Front Microbiol. 2017 Jul 11; doi: 10.3389/fmicb.2017.01244", "url":"https://www.frontiersin.org/articles/10.3389/fmicb.2017.01244/full"},
-    {"title":"Expanding the cyanobacterial nitrogen regulatory network: The GntR-like regulator PlmA interacts with the PII-PipX complex", "authors":"Jose I Labella, Anna Obrebska, Javier Espinosa, Paloma Salinas, Alicia Forcada-Nadal, Lorena Tremi&ntilde;o, Vicente Rubio and Asunci&oacute;n Contreras ", "year":"2016", "refe":"Front. Microbiol. 2016 Oct 6; doi: 10.3389/fmicb.2016.01677", "url":"https://www.frontiersin.org/articles/10.3389/fmicb.2016.01677/full"},
+    {"title":"Distinctive Features of PipX, a Unique Signaling Protein of Cyanobacteria", "authors":"Jose I. Labella, Raquel Cantos, Paloma Salinas, Javier Espinosa & Asunción Contreras", "year":"2020", "refe":"Life (Basel). 2020;10(6):E79. Published 2020 May 28. doi:10.3390/life10060079", "url":"https://www.mdpi.com/2075-1729/10/6/79"},
+    {"title":"The default cyanobacterial linked genome: an interactive platform based on cyanobacterial linkage networks to assist functional genomics", "authors":"Jose I. Labella, Antonio Llop and Asunción Contreras", "year":"2020", "refe":"FEBS Lett. 2020 Mar 31. doi: 10.1002/1873-3468.13775", "url":"https://febs.onlinelibrary.wiley.com/doi/abs/10.1002/1873-3468.13775"},
+    {"title":"The PII-NAGK-PipX-NtcA Regulatory Axis of Cyanobacteria: A Tale of Changing Partners, Allosteric Effectors and Non-covalent Interactions", "authors":"Alicia Forcada-Nadal, José Luis Llacer, Asunción Contreras, Clara Marco-Marín and Vicente Rubio ", "year":"2018", "refe":"Front. Mol. Biosci., 13 November 2018; doi: 10.3389/fmolb.2018.00091", "url":"https://www.frontiersin.org/articles/10.3389/fmolb.2018.00091/full"},
+    {"title":"The nitrogen regulator PipX acts in cis to prevent operon polarity", "authors":"Raquel Cantos, Jose Ignacio Labella, Javier Espinosa and Asunción Contreras ", "year":"2018", "refe":"Environ Microbiol Rep. 2018 Aug 20; doi: 10.1111/1758-2229.12688.", "url":"https://onlinelibrary.wiley.com/doi/full/10.1111/1758-2229.12688"},
+    {"title":"Energy drives the dynamic localization of cyanobacterial nitrogen regulators during diurnal cycles", "authors":"Javier Espinosa, Jose I Labella, Raquel Cantos and Asunción Contreras ", "year":"2018", "refe":"Environmental Microbiology 2018 Mar;20(3):1240-1252; doi: 10.1111/1462-2920.14071.", "url":"http://onlinelibrary.wiley.com/doi/10.1111/1462-2920.14071/full"},
+    {"title":"Studies on cyanobacterial protein PipY shed light on structure, potential functions and vitamin B6-dependent epilepsy", "authors":"Lorena Tremi&ntilde;o, Alicia Forcada-Nadal, Asunción Contreras and Vicente Rubio ", "year":"2017", "refe":"FEBS Letters 2017 Oct; doi: 10.1002/1873-3468.12841", "url":"http://onlinelibrary.wiley.com/doi/10.1002/1873-3468.12841/abstract;jsessionid=62631F9B65F6D65DC1BECC587D359EFC.f04t02"},
+    {"title":"PipY, a member of the conserved COG0325 family of PLP-binding proteins, expands the cyanobacterial nitrogen regulatory network", "authors":"Jose I Labella, Raquel Cantos, Javier Espinosa, Alicia Forcada-Nadal, Vicente Rubio and Asunción Contreras ", "year":"2017", "refe":"Front Microbiol. 2017 Jul 11; doi: 10.3389/fmicb.2017.01244", "url":"https://www.frontiersin.org/articles/10.3389/fmicb.2017.01244/full"},
+    {"title":"Expanding the cyanobacterial nitrogen regulatory network: The GntR-like regulator PlmA interacts with the PII-PipX complex", "authors":"Jose I Labella, Anna Obrebska, Javier Espinosa, Paloma Salinas, Alicia Forcada-Nadal, Lorena Tremi&ntilde;o, Vicente Rubio and Asunción Contreras ", "year":"2016", "refe":"Front. Microbiol. 2016 Oct 6; doi: 10.3389/fmicb.2016.01677", "url":"https://www.frontiersin.org/articles/10.3389/fmicb.2016.01677/full"},
     {"title":"Cross-talk and regulatory interactions between the essential response regulator RpaB and cyanobacterial circadian clock output.", "authors":"Javier Espinosa, Joseph S. Boyd, Raquel Cantos, Paloma Salinas, Susan S. Golden and Asuncion Contreras. ", "year":"2015", "refe":"Proc Natl Acad Sci U S A. 2015 Feb 4; doi:10.1073/pnas.1424632112.", "url":"https://www.pnas.org/content/112/7/2198.long"},
     {"title":"Detecting KaiC Phosphorylation Rhythms of the Cyanobacterial Circadian Oscillator In Vitro and In Vivo", "authors":"Yong-Ick Kim, Joseph S. Boyd, Javier Espinosa, Susan S. Golden. ", "year":"2014", "refe":"ISBN: 978-0-12-801218-5 - Methods in Enzymology Circadian Rhythms and Biological Clocks, Part A. Editorial Elsevier Science. pags. 153-173", "url":"https://www.sciencedirect.com/science/article/pii/S0076687914000044"},
     {"title":"PipX, the coactivator of NtcA, is a global regulator in cyanobacteria.", "authors":"Espinosa J, et al. ", "year":"2014", "refe":"Proc Natl Acad Sci U S A. 2014 Jun 10;111(23):E2423-30.", "url":"https://www.pnas.org/content/111/23/E2423.long"},

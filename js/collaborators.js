@@ -3,21 +3,21 @@ const collaborators = [
         title:"Prof.",
         name:"Vicente Rubio Zamora",
         country:"Spain",
-        aff:"Instituto de Biomedicina de Valencia (CSIC). Dpto. Gen&oacute;mica y Prote&oacute;mica. Unidad de enzimopatolog&iacute;a estructural.",
+        aff:"Instituto de Biomedicina de Valencia (CSIC). Dpto. Genómica y Proteómica. Unidad de enzimopatología estructural.",
         url:"http://www3.ibv.csic.es/index.php/es/investigacion/genomica/uee"
     },
     {
         title:"Dr.",
         name:"Alberto Marina Moreno",
         country:"Spain",
-        aff:"Instituto de Biomedicina de Valencia (CSIC). Dpto. Gen&oacute;mica y Prote&oacute;mica. Unidad de cristalograf&iacute;a de macromol&eacute;culas.",
+        aff:"Instituto de Biomedicina de Valencia (CSIC). Dpto. Genómica y Proteómica. Unidad de cristalografía de macromoléculas.",
         url:"https://www.csic.es/es/investigaci%C3%B3n/investigadoresalberto-marina-moreno"
     },
     {
         title:"Prof.",
-        name:"Jos&eacute; Luis Neira Faleiro",
+        name:"José Luis Neira Faleiro",
         country:"Spain",
-        aff:"Universidad Miguel Hern&aacute;ndez (IBMC). Unidad de dise&ntilde;o molecular y celular. Grupo de Estructura de biomol&eacute;culas.",
+        aff:"Universidad Miguel Hernández (IBMC). Unidad de diseño molecular y celular. Grupo de Estructura de biomoléculas.",
         url:"https://www.umh.es/contenido/Estudios/:persona_13101/datos_es.html"
     },
     {
@@ -38,7 +38,7 @@ const collaborators = [
         title:"Prof.",
         name:"Fernando de la Cruz Calahorra",
         country:"Spain",
-        aff:"Instituto de Biomedicina y Biotecnolog&iacute;a de Cantabria IBBTEC",
+        aff:"Instituto de Biomedicina y Biotecnología de Cantabria IBBTEC",
         url:"https://web.unican.es/ibbtec/es-es/sobre-el-ibbtec/equipo/directorio/detalle-miembro?d=FernandodelaCruzLab"
     },
     {
