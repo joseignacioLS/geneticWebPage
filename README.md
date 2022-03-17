@@ -1,21 +1,18 @@
-About the website
-    This is a custom website developed for the laboratory of genetics in the university of Alicante.
-    Unluckily, the hosting service of the university only allows vanilla js, so in order to have a
-    easy-to-work-with and dynamic website I have developed this modular system.
+This is a custom website developed for the laboratory of genetics in the university of Alicante.
 
-    In order to modify it you need to modify javascript files.
-    If you are not familiar with javascript, please be careful,
-    backup before editing, and work in small steps.
+Unluckily, the hosting service of the university only allows vanilla js, so in order to have a easy-to-work-with and dynamic website I have developed this modular system.
 
-    What can be easily done?
-    -Modify Article List
-    -Modify People List
-    -Modify Collaborators List
-    -Modify Resources List
+In order to modify it you need to modify javascript files. If you are not familiar with javascript, please be careful,backup before editing, and work in small steps.
 
-    What requires advanced JS knowledge?
-    -Modify text/images inside the webpage
-    -Modify colors/fonts/sizes
+What can be easily done?
+-Modify Article List
+-Modify People List
+-Modify Collaborators List
+-Modify Resources List
+
+What requires advanced JS knowledge?
+-Modify text/images inside the webpage
+-Modify colors/fonts/sizes
 
 How to update this website
 
