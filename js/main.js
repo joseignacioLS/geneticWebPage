@@ -27,9 +27,17 @@ const footer = document.getElementsByTagName("footer")[0]
 
 const loadPage = () => {
   const url = window.location.href.split("/").pop().toLowerCase()
-  let currentPage = url.split("#")[0]
-  let additionalUrl = url.split("#")[1] ?? "All"
+  let currentPage = url.split("?")[0]
+  let additionalUrl = url.split("?")[1] ?? "filter:All"
   additionalUrl = additionalUrl.replace("%20", " ")
+
+  let urlOptions = {}
+
+  additionalUrl.split("&").forEach(ele => {
+    let [key, value] = ele.split(":")
+    urlOptions[key] = value
+  })
+
 
   nav.innerHTML = ""
   main.innerHTML = ""
@@ -46,7 +54,7 @@ const loadPage = () => {
       research(main)
       break
     case "people.htm":
-      people(main, additionalUrl, true)
+      people(main, urlOptions.filter)
       break
     case "publications.htm":
       publications(main)

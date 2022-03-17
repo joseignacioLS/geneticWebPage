@@ -5,17 +5,10 @@ import {
 } from "../functions/basic.js"
 import { peopleList } from "../data/people-list.js"
 
-const people = (main, filter = "All", force = false) => {
+const people = (main, filter = "All") => {
   main.innerHTML = ""
 
-  let data = window.location.href.split("#")
-  if (force) {
-    window.location.href = window.location.href.split("#")[0] + `#${filter}`
-  } else if (data.length === 2) {
-    filter = data[1]
-  }
-  filter = filter.replace("%20", " ")
-
+  console.log(filter)
   let categories = [
     "All",
     ...removeDuplicates(peopleList.map((ele) => ele.key)),
@@ -29,7 +22,9 @@ const people = (main, filter = "All", force = false) => {
       [
         ...categories.map((cat) => {
           let span = createElement("span", ["nav--link"], [cat])
-          span.addEventListener("click", (e) => people(main, cat, true))
+          span.addEventListener("click", (e) => {
+            window.location.href = window.location.href.split("?")[0] + `?filter:${cat}`
+          })
           return span
         }),
       ]
