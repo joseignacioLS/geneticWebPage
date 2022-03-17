@@ -1,5 +1,8 @@
 About the website
-    This is a custom website developed by Jose Ignacio LS. It mimics how react works.
+    This is a custom website developed for the laboratory of genetics in the university of Alicante.
+    Unluckily, the hosting service of the university only allows vanilla js, so in order to have a
+    easy-to-work-with and dynamic website I have developed this modular system.
+
     In order to modify it you need to modify javascript files.
     If you are not familiar with javascript, please be careful,
     backup before editing, and work in small steps.
@@ -16,7 +19,7 @@ About the website
 
 How to update this website
 
-1.Include new articles
+1. Include new articles
     1.1 Open the file "pub-list.js" inside the "js/data/" folder
     1.2 Copy the first element inside the variable "pubList", it looks like this:
 
