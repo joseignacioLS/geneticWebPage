@@ -1,5 +1,5 @@
-import { collaborators } from "../data/collaborators.js"
-import { createElement } from "../functions/basic.js"
+import { collaborators } from "../data/collaborators.js?ver=2"
+import { createElement } from "../functions/basic.js?ver=2"
 
 const network = (main) => {
   let sectionContainer = createElement(

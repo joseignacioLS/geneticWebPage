@@ -1,5 +1,5 @@
-import { createElement } from "../functions/basic.js"
-import { resourceList } from "../data/resources-list.js"
+import { createElement } from "../functions/basic.js?ver=2"
+import { resourceList } from "../data/resources-list.js?ver=2"
 
 const resources = (main) => {
   let sectionContainer = createElement(

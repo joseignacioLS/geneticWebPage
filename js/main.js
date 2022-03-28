@@ -1,13 +1,13 @@
-import { appendNav } from "./modulos/nav.js"
-import { index } from "./modulos/index.js"
-import { appendFooter } from "./modulos/footer.js"
-import { research } from "./modulos/research.js"
-import { publications } from "./modulos/publications.js"
-import { network } from "./modulos/network.js"
-import { workWithUs } from "./modulos/workwithus.js"
-import { contact } from "./modulos/contact.js"
-import { resources } from "./modulos/resources.js"
-import { people } from "./modulos/people.js"
+import { appendNav } from "./modulos/nav.js?ver=2"
+import { index } from "./modulos/index.js?ver=2"
+import { appendFooter } from "./modulos/footer.js?ver=2"
+import { research } from "./modulos/research.js?ver=2"
+import { publications } from "./modulos/publications.js?ver=2"
+import { network } from "./modulos/network.js?ver=2"
+import { workWithUs } from "./modulos/workwithus.js?ver=2"
+import { contact } from "./modulos/contact.js?ver=2"
+import { resources } from "./modulos/resources.js?ver=2"
+import { people } from "./modulos/people.js?ver=2"
 
 const pages = {
   Home: "./index.htm",

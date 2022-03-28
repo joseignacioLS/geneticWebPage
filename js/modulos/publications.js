@@ -1,5 +1,5 @@
-import { pubList } from "../data/pub-list.js"
-import { createElement, decorateTitle } from "../functions/basic.js"
+import { pubList } from "../data/pub-list.js?ver=2"
+import { createElement, decorateTitle } from "../functions/basic.js?ver=2"
 
 const publications = (main) => {
   let sectionContainer = createElement(

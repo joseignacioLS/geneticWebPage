@@ -3,7 +3,7 @@ import {
   removeDuplicates,
   capitalizeFirstLetter,
 } from "../functions/basic.js"
-import { peopleList } from "../data/people-list.js"
+import { peopleList } from "../data/people-list.js?ver=2"
 
 const people = (main, filter = "All") => {
   main.innerHTML = ""
@@ -39,7 +39,7 @@ const people = (main, filter = "All") => {
     //foto
     let im = document.createElement("img")
     im.className = "img--all"
-    im.src = "./imagenes/people/grupo.jpg?ver=1"
+    im.src = "./imagenes/people/grupo.jpg?ver=2"
     main.appendChild(im)
   } else {
     peopleList

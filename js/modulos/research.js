@@ -1,4 +1,4 @@
-import { createElement } from "../functions/basic.js"
+import { createElement } from "../functions/basic.js?ver=2"
 
 const research = (main) => {
   let sectionContainer = createElement(

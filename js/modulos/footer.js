@@ -1,4 +1,4 @@
-import { createElement } from "../functions/basic.js"
+import { createElement } from "../functions/basic.js?ver=2"
 
 const appendFooter = (footer) => {
   footer.appendChild(

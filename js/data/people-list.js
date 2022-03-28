@@ -41,7 +41,7 @@ const peopleList = [
     tlf: "+34 965 90 93 48",
     mail: "ls.joseignacio@ua.es",
     desc: [],
-    pic: "./imagenes/people/foto-jose2.jpg",
+    pic: "./imagenes/people/foto-jose.jpg",
   },
   {
     key: "Ph.D Students",
@@ -59,7 +59,7 @@ const peopleList = [
     tlf: "+34 965 90 93 48",
     mail: "antonio.llop@ua.es",
     desc: [],
-    pic: "./imagenes/people/foto-antonio.jpg",
+    pic: "./imagenes/people/foto-nadie.jpg",
   },
   {
     key: "Ph.D Students",

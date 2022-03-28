@@ -1,4 +1,4 @@
-import { cursives } from "../data/italic-words.js"
+import { cursives } from "../data/italic-words.js?ver=2"
 
 const createElement = (type, classNames, content, attrs = {}) => {
   let ele = document.createElement(type)
